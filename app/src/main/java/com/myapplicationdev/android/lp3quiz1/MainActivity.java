@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "default");
                 builder.setContentTitle("LP3 Quiz1");
-                builder.setContentText("This is a basic/simple notification");
+                builder.setContentText("This is simple");
                 builder.setSmallIcon(android.R.drawable.btn_star_big_off);
                 builder.setContentIntent(pIntent);
                 builder.setAutoCancel(true);
@@ -73,11 +73,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.koala);
+
                 NotificationCompat.Builder builder = new
                         NotificationCompat.Builder(MainActivity.this, "default");
                 builder.setContentTitle("LP3 Quiz1");
                 builder.setContentText("Expand to see picture");
                 builder.setSmallIcon(android.R.drawable.btn_star_big_off);
+                builder.setStyle(new NotificationCompat.BigPictureStyle()
+                .bigPicture(picture)
+                .setBigContentTitle("This ia a Big Picture")
+                .setSummaryText("Koala!"));
                 builder.setContentIntent(pIntent);
                 builder.setAutoCancel(true);
 
@@ -97,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 al.add("This is the second line");
                 al.add("This is the third line");
 
+
                 NotificationCompat.InboxStyle inboxS = new NotificationCompat.InboxStyle();
                 for (String tmp : al){ //iterate the entire ArrayList object and extract each element into variable tmp
                     inboxS.addLine(tmp);  //do something to the tmp, which is to retrive the value and place into Notification Inbox Style
@@ -108,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setContentTitle("LP3 Quiz1");
                 builder.setContentText("Expand to see content");
                 builder.setSmallIcon(android.R.drawable.btn_star_big_off);
+                builder.setStyle(inboxS);
                 builder.setContentIntent(pIntent);
                 builder.setAutoCancel(true);
 
